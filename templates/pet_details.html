@@ -1,0 +1,43 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- block title -->
+{% block title %}{{pet.name}} Details{% endblock %}
+<!-- block content start-->
+{% block content %}
+<h1>Details about <i>{{pet.name}}</i></h1>
+<div>
+   <div>
+      <div>
+         <img
+            class="img-thumbnail mb-2"
+            src="{{pet.photo_url}}"
+            alt="{{pet.species}} photo"
+         />
+      </div>
+      <div class="form-group"><b>Name</b> | {{pet.name}}</div>
+      <div class="form-group"><b>Species</b> | {{pet.species}}</div>
+      <div class="form-group"><b>Age</b> | {{pet.age}}</div>
+   </div>
+</div>
+<div>
+   <form method="POST">
+      {{ form.hidden_tag() }}
+
+      <!-- showing label and field values for each form input -->
+      <div class="form-group">
+         {{form.notes.label}} {{form.notes(class_="form-control")}} {% if
+         form.notes.errors%}
+         <small class="text-danger">{{form.notes.errors}}</small> {% endif %}
+      </div>
+      <div class="form-group">
+         {{form.photo_url.label}} {{form.photo_url}} {% if
+         form.photo_url.errors%}
+         <small class="text-danger">{{form.photo_url.errors}}</small> {% endif
+         %}
+      </div>
+      <div class="form-group">{{form.available.label}} {{form.available}}</div>
+
+      <button class="btn btn-success">Submit Edit</button>
+   </form>
+</div>
+{% endblock %}

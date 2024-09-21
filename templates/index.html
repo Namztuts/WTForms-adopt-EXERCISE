@@ -1,0 +1,47 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- block title -->
+{% block title %}WTForms-Adoption Agency{% endblock %}
+<!-- block content start-->
+{% block content %}
+<h1>WTForms-Adoption Agency</h1>
+<!-- <div class="pet-details">
+   {% for pet in pets %}
+   <div>
+      <div>
+         <a href="/{{pet.id}}">{{pet.name}}</a> | {% if pet.available %}
+         <b>is available for adoption!</b>
+         {% else %}
+         <b>found a new home!</b>
+         {% endif %}
+      </div>
+      <div>
+         <img
+            src="{{pet.photo_url}}"
+            alt="{{pet.species}} photo"
+         />
+      </div>
+   </div>
+   {% endfor %}
+</div> -->
+<div class="row pets-listing">
+   {% for pet in pets %}
+   <div class="col-2 text-center my-3">
+      <img
+         class="img-thumbnail mb-10"
+         src="{{pet.photo_url}}"
+         alt="{{pet.species}} Image"
+      />
+      <div>
+         <!-- To make sure the name and availability are below image -->
+         <a href="{{pet.id}}">{{ pet.name }} |</a>
+         {% if pet.available %}
+         <b>is available!</b>
+         {% else %}
+         <b>found a home!</b>
+         {% endif %}
+      </div>
+   </div>
+   {% endfor %}
+</div>
+{% endblock %}
